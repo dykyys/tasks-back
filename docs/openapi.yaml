@@ -11,7 +11,7 @@ tags:
     description: Operations about tasks.
 servers:
   - url: http://localhost:3000
-  - url: https://hw7-swagger-cd2c.onrender.com
+  - url: https://tasks-back-9h2m.onrender.com/
 paths:
   /auth/register:
     post:
