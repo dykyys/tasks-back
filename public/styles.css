@@ -9,3 +9,7 @@ body {
   height: 98vh;
   box-shadow: 0 0 20px 2px #83a459;
 }
+a {
+  color: #b8de86;
+  text-decoration: none;
+}
