@@ -1,0 +1,58 @@
+tags:
+  - Tasks
+summary: Create task
+operationId: createTasks
+description: 'Create a task with payload'
+security:
+  - bearerAuth: []
+requestBody:
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        required:
+          - title
+          - description
+          - status
+        properties:
+          title:
+            description: "Task's title"
+            type: string
+            example: 'Docs'
+          description:
+            description: "Task's description"
+            type: string
+            example: 'Update API documentation'
+          status:
+            type: string
+            enum:
+              - todo
+              - in-progress
+              - freview
+              - done
+              - canceled
+              - blocked
+            example: 'todo'
+responses:
+  '201':
+    description: Creates a task
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully created a task!
+            data:
+              type: object
+              $ref: ../../components/schemas/task.yaml
+  '401':
+    $ref: '../../components/responses/401.yaml'

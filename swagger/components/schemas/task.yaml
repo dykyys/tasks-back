@@ -1,0 +1,23 @@
+type: object
+required:
+  - _id
+  - title
+  - description
+  - status
+properties:
+  _id:
+    description: "Tasks's id"
+    type: string
+    example: 65e4decdd286b30065d54af9
+  title:
+    description: "Tasks's title"
+    type: string
+    example: 'Docs'
+  description:
+    description: "Tasks's title"
+    type: string
+    example: 'Update API documentation'
+  status:
+    description: "Tasks's status"
+    type: string
+    enum: ['todo', 'in-progress', 'review', 'done', 'blocked', 'canceled']

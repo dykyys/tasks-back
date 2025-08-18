@@ -1,0 +1,43 @@
+tags:
+  - Auth
+summary: Register User
+operationId: registerUser
+description: 'Register User in the Application'
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - email
+        properties:
+          email:
+            description: 'User Email'
+            type: string
+responses:
+  '201':
+    description: Successfully registered a user!
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully registered a user!
+            data:
+              type: object
+              required:
+                - accessToken
+              properties:
+                accessToken:
+                  type: string
+                  example: '2zQaqOpj5WrfbR32j0UAh7WAtaIoaRYkYNVZKg6T'

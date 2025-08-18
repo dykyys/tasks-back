@@ -1,0 +1,60 @@
+tags:
+  - Tasks
+summary: Patch task by id
+operationId: patchTask
+description: 'Patch task by id. Please provide only valid mongodb id'
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '678bf8af14d55985f0900f6e'
+requestBody:
+  required: true
+  content:
+    multipart/form-data:
+      schema:
+        type: object
+        properties:
+          title:
+            type: string
+            example: 'Docs'
+          description:
+            type: string
+            example: 'Update API documentation'
+          status:
+            type: string
+            enum:
+              - todo
+              - in-progress
+              - freview
+              - done
+              - canceled
+              - blocked
+            example: 'todo'
+responses:
+  '200':
+    description: 'Successfully updated task'
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully found and update task with id 65ca67e7ae7f10c88b598384!
+            data:
+              type: object
+              $ref: '../../../components/schemas/task.yaml'
+  '401':
+    $ref: '../../../components/responses/401.yaml'
