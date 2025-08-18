@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "version": "1.0.0",
-    "title": "Contacts app",
+    "title": "Tasks app",
     "license": {
       "name": "Apache 2.0",
       "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
@@ -27,9 +27,7 @@
   "paths": {
     "/auth/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "Register User",
         "operationId": "registerUser",
         "description": "Register User in the Application",
@@ -39,9 +37,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "email"
-                ],
+                "required": ["email"],
                 "properties": {
                   "email": {
                     "description": "User Email",
@@ -59,11 +55,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -75,9 +67,7 @@
                     },
                     "data": {
                       "type": "object",
-                      "required": [
-                        "accessToken"
-                      ],
+                      "required": ["accessToken"],
                       "properties": {
                         "accessToken": {
                           "type": "string",
@@ -95,9 +85,7 @@
     },
     "/tasks": {
       "get": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "summary": "Get list of task",
         "operationId": "getTasks",
         "description": "Get list of tasks with this endpoint",
@@ -147,11 +135,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -206,9 +190,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "summary": "Create task",
         "operationId": "createTasks",
         "description": "Create a task with payload",
@@ -222,11 +204,7 @@
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "title",
-                  "description",
-                  "status"
-                ],
+                "required": ["title", "description", "status"],
                 "properties": {
                   "title": {
                     "description": "Task's title",
@@ -262,11 +240,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -293,9 +267,7 @@
     },
     "/tasks/{id}": {
       "get": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "summary": "Get task by id",
         "operationId": "getTask",
         "description": "Get task by id. Please provide only valid mongodb id",
@@ -323,11 +295,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -352,9 +320,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "summary": "Patch task by id",
         "operationId": "patchTask",
         "description": "Patch task by id. Please provide only valid mongodb id",
@@ -413,11 +379,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "required": [
-                    "status",
-                    "message",
-                    "data"
-                  ],
+                  "required": ["status", "message", "data"],
                   "properties": {
                     "status": {
                       "type": "integer",
@@ -442,9 +404,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tasks"
-        ],
+        "tags": ["Tasks"],
         "summary": "Delete task by id",
         "operationId": "deleteTask",
         "description": "Delete task by id. Please provide only valid mongodb id",
@@ -489,12 +449,7 @@
     "schemas": {
       "task": {
         "type": "object",
-        "required": [
-          "_id",
-          "title",
-          "description",
-          "status"
-        ],
+        "required": ["_id", "title", "description", "status"],
         "properties": {
           "_id": {
             "description": "Tasks's id",
@@ -533,11 +488,7 @@
           "application/json": {
             "schema": {
               "type": "object",
-              "required": [
-                "status",
-                "message",
-                "data"
-              ],
+              "required": ["status", "message", "data"],
               "properties": {
                 "status": {
                   "type": "integer",
@@ -549,9 +500,7 @@
                 },
                 "data": {
                   "type": "object",
-                  "required": [
-                    "message"
-                  ],
+                  "required": ["message"],
                   "properties": {
                     "message": {
                       "type": "string",
