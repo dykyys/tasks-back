@@ -15,6 +15,7 @@ requestBody:
           email:
             description: 'User Email'
             type: string
+            example: 'joker@gmai.com'
 responses:
   '201':
     description: Successfully registered a user!

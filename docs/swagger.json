@@ -45,7 +45,8 @@
                 "properties": {
                   "email": {
                     "description": "User Email",
-                    "type": "string"
+                    "type": "string",
+                    "example": "joker@gmai.com"
                   }
                 }
               }
