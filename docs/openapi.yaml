@@ -7,10 +7,11 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   description: This is a documentation of tasks app
 tags:
+  - name: Auth
+    description: Access token generation
   - name: Tasks
-    description: Operations about tasks.
+    description: Operations with tasks collection
 servers:
-  - url: http://localhost:3000
   - url: https://tasks-back-9h2m.onrender.com/
 paths:
   /auth/register:

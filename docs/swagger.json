@@ -11,16 +11,17 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000"
-    },
-    {
       "url": "https://tasks-back-9h2m.onrender.com/"
     }
   ],
   "tags": [
     {
+      "name": "Auth",
+      "description": "Access token generation"
+    },
+    {
       "name": "Tasks",
-      "description": "Operations about tasks."
+      "description": "Operations with tasks collection"
     }
   ],
   "paths": {
