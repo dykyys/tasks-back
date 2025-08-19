@@ -25,7 +25,7 @@ tasksRouter.post(
 );
 
 tasksRouter.patch(
-  '/:contactId',
+  '/:taskId',
   isValidId,
   validateBody(taskUpdateSchema),
   ctrlWrapper(patchTaskController),

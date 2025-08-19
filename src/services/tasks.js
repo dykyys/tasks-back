@@ -32,15 +32,10 @@ export const getTaskById = async (filter) => {
 export const addTask = (payload) => TasksCollection.create(payload);
 
 export const updateTask = async (filter, payload, options = {}) => {
-  const result = await TasksCollection.findOneAndUpdate(filter, payload, {
-    includeResultMetadata: true,
+  const result = await TasksCollection.findByIdAndUpdate(filter, payload, {
+    new: true,
   });
-
-  if (!result || !result.value) return null;
-
-  return {
-    data: result.value,
-  };
+  return result;
 };
 
 export const deleteTask = (filter) => TasksCollection.findOneAndDelete(filter);

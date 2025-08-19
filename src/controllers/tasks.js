@@ -12,7 +12,6 @@ import createHttpError from 'http-errors';
 export const getTasksController = async (req, res) => {
   const { page, perPage } = parsePaginationParams(req.query);
   const filter = parseContactFilterParams(req.query);
-  filter.userId = req.user._id;
 
   const data = await getTasks({
     page,
@@ -22,14 +21,13 @@ export const getTasksController = async (req, res) => {
 
   res.json({
     status: 200,
-    message: 'Successfully found contacts!',
+    message: 'Successfully found tasks!',
     data: data,
   });
 };
 
 export const getTaskByIdController = async (req, res, next) => {
   const { taskId } = req.params;
-  console.log(taskId);
   const task = await getTaskById({ _id: taskId });
 
   if (!task) {
@@ -44,11 +42,6 @@ export const getTaskByIdController = async (req, res, next) => {
 };
 
 export const createTaskController = async (req, res, next) => {
-  const userId = req.user._id;
-  if (!userId) {
-    throw createHttpError(400, 'User is not authenticated');
-  }
-
   const task = await addTask({ ...req.body });
   res.status(201).json({
     status: 201,
@@ -72,15 +65,15 @@ export const deleteTaskController = async (req, res) => {
 export const patchTaskController = async (req, res, next) => {
   const { taskId } = req.params;
 
-  const result = await updateTask({ _id: taskId });
+  const result = await updateTask(taskId, req.body);
 
   if (!result) {
-    throw createHttpError(404, 'Contact not found');
+    throw createHttpError(404, 'Task not found');
   }
 
   res.status(200).json({
     status: 200,
-    message: 'Successfully patched a contact!',
+    message: 'Successfully patched a task!',
     data: result,
   });
 };
