@@ -42,6 +42,7 @@ export const getTaskByIdController = async (req, res, next) => {
 };
 
 export const createTaskController = async (req, res, next) => {
+  console.log(req.body);
   const task = await addTask({ ...req.body });
   res.status(201).json({
     status: 201,
