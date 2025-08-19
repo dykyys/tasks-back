@@ -172,7 +172,7 @@
                         "totalPages"
                       ],
                       "properties": {
-                        "data": {
+                        "tasks": {
                           "type": "array",
                           "items": {
                             "$ref": "#/components/schemas/task"

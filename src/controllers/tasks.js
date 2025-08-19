@@ -42,7 +42,6 @@ export const getTaskByIdController = async (req, res, next) => {
 };
 
 export const createTaskController = async (req, res, next) => {
-  console.log(req.body);
   const task = await addTask({ ...req.body });
   res.status(201).json({
     status: 201,
@@ -60,7 +59,11 @@ export const deleteTaskController = async (req, res) => {
     throw createHttpError(404, 'Task not found');
   }
 
-  res.status(204).send();
+  res.status(204).json({
+    status: 201,
+    message: `Successfully delete a task!`,
+    data: task,
+  });
 };
 
 export const patchTaskController = async (req, res, next) => {
