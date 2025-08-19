@@ -41,16 +41,8 @@ responses:
         schema:
           type: object
           required:
-            - status
-            - message
             - data
           properties:
-            status:
-              type: integer
-              example: 201
-            message:
-              type: string
-              example: Successfully created a task!
             data:
               type: object
               $ref: ../../components/schemas/task.yaml

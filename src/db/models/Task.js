@@ -15,4 +15,12 @@ const taskSchema = new Schema(
   { versionKey: false, timestamps: true },
 );
 
+taskSchema.set('toJSON', {
+  transform: (doc, ret) => {
+    ret.id = ret._id;
+    delete ret._id;
+    return ret;
+  },
+});
+
 export const TasksCollection = model('task', taskSchema);

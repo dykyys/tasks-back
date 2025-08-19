@@ -17,6 +17,11 @@ parameters:
       type: integer
       example: 10
   - in: query
+    name: search
+    schema:
+      type: string
+      example: Api
+  - in: query
     name: status
     schema:
       type: string
@@ -34,12 +39,6 @@ responses:
             - message
             - data
           properties:
-            status:
-              type: integer
-              example: 200
-            message:
-              type: string
-              example: Successfully found tasks!
             data:
               type: object
               required:

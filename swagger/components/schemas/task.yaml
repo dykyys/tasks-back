@@ -5,7 +5,7 @@ required:
   - description
   - status
 properties:
-  _id:
+  id:
     description: "Tasks's id"
     type: string
     example: 65e4decdd286b30065d54af9

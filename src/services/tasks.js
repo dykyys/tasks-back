@@ -1,27 +1,25 @@
 import { TasksCollection } from '../db/models/Task.js';
+import { buildTasksFilter } from '../utils/filters/parseContactFilterParams.js';
 
 export const getTasks = async ({ page = 1, perPage = 10, filter = {} }) => {
-  const limit = perPage;
-  const skip = (page - 1) * limit;
+  const limit = Number(perPage) || 10;
+  const skip = (Number(page) > 0 ? Number(page) - 1 : 0) * limit;
 
-  const tasksQuery = TasksCollection.find();
+  const mongoFilter = buildTasksFilter(filter);
 
-  if (filter.status) {
-    tasksQuery.where('status').equals(filter.status);
-  }
+  const totalItems = await TasksCollection.countDocuments(mongoFilter);
 
-  const totalItems = await TasksCollection.find()
-    .merge(tasksQuery)
-    .countDocuments(); //загальна кількість (одразу число)
-
-  const tasks = await tasksQuery.find().skip(skip).limit(limit);
+  const tasks = await TasksCollection.find(mongoFilter)
+    .sort({ createdAt: -1 })
+    .skip(skip)
+    .limit(limit);
 
   return {
     tasks,
-    page,
-    perPage,
+    page: Number(page) || 1,
+    perPage: limit,
     totalItems,
-    totalPages: Math.ceil(totalItems / perPage),
+    totalPages: Math.ceil(totalItems / limit),
   };
 };
 

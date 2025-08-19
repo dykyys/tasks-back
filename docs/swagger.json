@@ -12,6 +12,9 @@
   "servers": [
     {
       "url": "https://tasks-back-9h2m.onrender.com/"
+    },
+    {
+      "url": "http://localhost:3000/"
     }
   ],
   "tags": [
@@ -126,6 +129,14 @@
           },
           {
             "in": "query",
+            "name": "search",
+            "schema": {
+              "type": "string",
+              "example": "Api"
+            }
+          },
+          {
+            "in": "query",
             "name": "status",
             "schema": {
               "type": "string",
@@ -154,14 +165,6 @@
                     "data"
                   ],
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully found tasks!"
-                    },
                     "data": {
                       "type": "object",
                       "required": [
@@ -264,19 +267,9 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status",
-                    "message",
                     "data"
                   ],
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 201
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully created a task!"
-                    },
                     "data": {
                       "type": "object",
                       "$ref": "#/components/schemas/task"
@@ -325,19 +318,9 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status",
-                    "message",
                     "data"
                   ],
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully found task with id 65ca67e7ae7f10c88b598384!"
-                    },
                     "data": {
                       "type": "object",
                       "$ref": "#/components/schemas/task"
@@ -415,19 +398,9 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status",
-                    "message",
                     "data"
                   ],
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Successfully found and update task with id 65ca67e7ae7f10c88b598384!"
-                    },
                     "data": {
                       "type": "object",
                       "$ref": "#/components/schemas/task"
@@ -467,8 +440,25 @@
           }
         ],
         "responses": {
-          "204": {
-            "description": "Contact task successfully."
+          "200": {
+            "description": "Contact task successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "data"
+                  ],
+                  "properties": {
+                    "status": null,
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/task"
+                    }
+                  }
+                }
+              }
+            }
           },
           "401": {
             "$ref": "#/components/responses/401"
@@ -497,7 +487,7 @@
           "status"
         ],
         "properties": {
-          "_id": {
+          "id": {
             "description": "Tasks's id",
             "type": "string",
             "example": "65e4decdd286b30065d54af9"

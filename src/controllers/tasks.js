@@ -19,11 +19,7 @@ export const getTasksController = async (req, res) => {
     filter,
   });
 
-  res.json({
-    status: 200,
-    message: 'Successfully found tasks!',
-    data: data,
-  });
+  res.json(data);
 };
 
 export const getTaskByIdController = async (req, res, next) => {
@@ -34,20 +30,12 @@ export const getTaskByIdController = async (req, res, next) => {
     throw createHttpError(404, 'Task not found');
   }
 
-  res.status(200).json({
-    status: 200,
-    message: `Successfully found task with id ${taskId}!`,
-    data: task,
-  });
+  res.status(200).json(task);
 };
 
 export const createTaskController = async (req, res, next) => {
   const task = await addTask({ ...req.body });
-  res.status(201).json({
-    status: 201,
-    message: `Successfully created a task!`,
-    data: task,
-  });
+  res.status(201).json(task);
 };
 
 export const deleteTaskController = async (req, res) => {
@@ -59,11 +47,7 @@ export const deleteTaskController = async (req, res) => {
     throw createHttpError(404, 'Task not found');
   }
 
-  res.status(204).json({
-    status: 201,
-    message: `Successfully delete a task!`,
-    data: task,
-  });
+  res.status(200).json(task);
 };
 
 export const patchTaskController = async (req, res, next) => {
@@ -75,9 +59,5 @@ export const patchTaskController = async (req, res, next) => {
     throw createHttpError(404, 'Task not found');
   }
 
-  res.status(200).json({
-    status: 200,
-    message: 'Successfully patched a task!',
-    data: result,
-  });
+  res.status(200).json(result);
 };

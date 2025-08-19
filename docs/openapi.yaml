@@ -13,6 +13,7 @@ tags:
     description: Operations with tasks collection
 servers:
   - url: https://tasks-back-9h2m.onrender.com/
+  - url: http://localhost:3000/
 paths:
   /auth/register:
     post:
