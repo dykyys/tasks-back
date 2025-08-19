@@ -160,44 +160,34 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "status",
-                    "message",
-                    "data"
+                    "tasks",
+                    "page",
+                    "perPage",
+                    "totalItems",
+                    "totalPages"
                   ],
                   "properties": {
-                    "data": {
-                      "type": "object",
-                      "required": [
-                        "data",
-                        "page",
-                        "perPage",
-                        "totalItems",
-                        "totalPages"
-                      ],
-                      "properties": {
-                        "tasks": {
-                          "type": "array",
-                          "items": {
-                            "$ref": "#/components/schemas/task"
-                          }
-                        },
-                        "page": {
-                          "type": "number",
-                          "example": 1
-                        },
-                        "perPage": {
-                          "type": "number",
-                          "example": 10
-                        },
-                        "totalItems": {
-                          "type": "number",
-                          "example": 21
-                        },
-                        "totalPages": {
-                          "type": "number",
-                          "example": 3
-                        }
+                    "tasks": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/task"
                       }
+                    },
+                    "page": {
+                      "type": "number",
+                      "example": 1
+                    },
+                    "perPage": {
+                      "type": "number",
+                      "example": 10
+                    },
+                    "totalItems": {
+                      "type": "number",
+                      "example": 21
+                    },
+                    "totalPages": {
+                      "type": "number",
+                      "example": 3
                     }
                   }
                 }
@@ -265,16 +255,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "data"
-                  ],
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/task"
-                    }
-                  }
+                  "$ref": "#/components/schemas/task"
+                },
+                "example": {
+                  "id": "65e4decdd286b30065d54af9",
+                  "title": "Docs",
+                  "description": "Update API documentation",
+                  "status": "todo",
+                  "createdAt": "2025-08-19T13:40:27.551Z",
+                  "updatedAt": "2025-08-19T13:40:27.551Z"
                 }
               }
             }
@@ -314,18 +303,17 @@
           "200": {
             "description": "Get task by id",
             "content": {
-              "application/json": {
+              "aapplication/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "data"
-                  ],
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/task"
-                    }
-                  }
+                  "$ref": "#/components/schemas/task"
+                },
+                "example": {
+                  "id": "65e4decdd286b30065d54af9",
+                  "title": "Docs",
+                  "description": "Update API documentation",
+                  "status": "todo",
+                  "createdAt": "2025-08-19T13:40:27.551Z",
+                  "updatedAt": "2025-08-19T13:40:27.551Z"
                 }
               }
             }
@@ -396,16 +384,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "data"
-                  ],
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/task"
-                    }
-                  }
+                  "$ref": "#/components/schemas/task"
+                },
+                "example": {
+                  "id": "65e4decdd286b30065d54af9",
+                  "title": "Docs",
+                  "description": "Update API documentation",
+                  "status": "todo",
+                  "createdAt": "2025-08-19T13:40:27.551Z",
+                  "updatedAt": "2025-08-19T13:40:27.551Z"
                 }
               }
             }
@@ -445,17 +432,15 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object",
-                  "required": [
-                    "data"
-                  ],
-                  "properties": {
-                    "status": null,
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/task"
-                    }
-                  }
+                  "$ref": "#/components/schemas/task"
+                },
+                "example": {
+                  "id": "65e4decdd286b30065d54af9",
+                  "title": "Docs",
+                  "description": "Update API documentation",
+                  "status": "todo",
+                  "createdAt": "2025-08-19T13:40:27.551Z",
+                  "updatedAt": "2025-08-19T13:40:27.551Z"
                 }
               }
             }
@@ -513,6 +498,16 @@
               "blocked",
               "canceled"
             ]
+          },
+          "createdAt": {
+            "description": "Tasks's data create",
+            "type": "string",
+            "example": "2025-08-19T13:40:27.551Z"
+          },
+          "updatedAt": {
+            "description": "Tasks's data create",
+            "type": "string",
+            "example": "2025-08-19T13:40:27.551Z"
           }
         }
       }

@@ -35,34 +35,27 @@ responses:
         schema:
           type: object
           required:
-            - status
-            - message
-            - data
+            - tasks
+            - page
+            - perPage
+            - totalItems
+            - totalPages
           properties:
-            data:
-              type: object
-              required:
-                - data
-                - page
-                - perPage
-                - totalItems
-                - totalPages
-              properties:
-                tasks:
-                  type: array
-                  items:
-                    $ref: ../../components/schemas/task.yaml
-                page:
-                  type: number
-                  example: 1
-                perPage:
-                  type: number
-                  example: 10
-                totalItems:
-                  type: number
-                  example: 21
-                totalPages:
-                  type: number
-                  example: 3
+            tasks:
+              type: array
+              items:
+                $ref: ../../components/schemas/task.yaml
+            page:
+              type: number
+              example: 1
+            perPage:
+              type: number
+              example: 10
+            totalItems:
+              type: number
+              example: 21
+            totalPages:
+              type: number
+              example: 3
   '401':
     $ref: '../../components/responses/401.yaml'

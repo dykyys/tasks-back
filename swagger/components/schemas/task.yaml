@@ -21,3 +21,11 @@ properties:
     description: "Tasks's status"
     type: string
     enum: ['todo', 'in-progress', 'review', 'done', 'blocked', 'canceled']
+  createdAt:
+    description: "Tasks's data create"
+    type: string
+    example: '2025-08-19T13:40:27.551Z'
+  updatedAt:
+    description: "Tasks's data create"
+    type: string
+    example: '2025-08-19T13:40:27.551Z'

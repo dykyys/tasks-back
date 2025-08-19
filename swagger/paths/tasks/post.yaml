@@ -39,12 +39,13 @@ responses:
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - data
-          properties:
-            data:
-              type: object
-              $ref: ../../components/schemas/task.yaml
+          $ref: ../../components/schemas/task.yaml
+        example:
+          id: '65e4decdd286b30065d54af9'
+          title: 'Docs'
+          description: 'Update API documentation'
+          status: 'todo'
+          createdAt: '2025-08-19T13:40:27.551Z'
+          updatedAt: '2025-08-19T13:40:27.551Z'
   '401':
     $ref: '../../components/responses/401.yaml'
