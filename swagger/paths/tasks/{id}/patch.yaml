@@ -30,7 +30,7 @@ requestBody:
             enum:
               - todo
               - in-progress
-              - freview
+              - review
               - done
               - canceled
               - blocked
