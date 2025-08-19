@@ -6,7 +6,7 @@ description: 'Register User in the Application'
 security: []
 requestBody:
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         required:

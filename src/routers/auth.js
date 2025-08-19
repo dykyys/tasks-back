@@ -8,8 +8,12 @@ import { authRegisterSchema } from '../validation/auth.js';
 
 const authRouter = Router();
 
+import multer from 'multer';
+const upload = multer({ storage: multer.memoryStorage() });
+
 authRouter.post(
   '/register',
+  upload.none(),
   validateBody(authRegisterSchema),
   ctrlWrapper(authController.registerController),
 );
