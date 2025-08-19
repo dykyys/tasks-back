@@ -16,10 +16,15 @@ import { taskAddSchema, taskUpdateSchema } from '../validation/task.js';
 const tasksRouter = Router();
 tasksRouter.use(authenticate);
 
+import multer from 'multer';
+const upload = multer({ storage: multer.memoryStorage() });
+
 tasksRouter.get('/', ctrlWrapper(getTasksController));
 tasksRouter.get('/:taskId', isValidId, ctrlWrapper(getTaskByIdController));
+
 tasksRouter.post(
   '/',
+  upload.none(),
   validateBody(taskAddSchema),
   ctrlWrapper(createTaskController),
 );
@@ -27,6 +32,7 @@ tasksRouter.post(
 tasksRouter.patch(
   '/:taskId',
   isValidId,
+  upload.none(),
   validateBody(taskUpdateSchema),
   ctrlWrapper(patchTaskController),
 );
